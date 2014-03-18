@@ -2,7 +2,7 @@
  * Trinidad esparza
  * CITP 290 
  * Spring 2014
- * Most of the classes being used are use as referance from
+ * Most of the classes being used are use as reference from
  * @author hoffmann, zachary
  *
  * 
@@ -17,6 +17,7 @@ public class Employee {
 
     public static final String MANAGER_LEVEL = "MANAGER";
     public static final String EMPLOYEE_LEVEL = "EMPLOYEE";
+    public static final String ADMIN_LEVEL = "ADMIN";
     //created getters and setters
     private String username;
     private char[] password;
@@ -38,11 +39,11 @@ public class Employee {
         this.password = password;
     }
 
-    public String getAccessLeve() {
+    public String getAccessLevel() {
         return accessLevel;
     }
 
-    public void setAccessLeve(String accessLeve) {
+    public void setAccessLevel(String accessLeve) {
         this.accessLevel = accessLeve;
     }
 }

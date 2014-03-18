@@ -41,6 +41,10 @@ public class CheckPayment extends Payment {
     public void setCheckNum(String checkNum) {
         this.checkNum = checkNum;
     }
-    
-    
+        
+    @Override
+	public String toString() {
+		return "Check (#" + accountNum + "): " + this.getFormattedAmount();
+	}
+
 }

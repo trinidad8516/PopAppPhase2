@@ -21,7 +21,6 @@ import java.util.Scanner;
  * Trinidad Esparza
  */
 public class LoginDisplayController {
-
     public void run() {
         LoginDisplayView view = new LoginDisplayView();
         LoginDisplayModel model = new LoginDisplayModel();
@@ -29,11 +28,10 @@ public class LoginDisplayController {
         Scanner sc = new Scanner(System.in);
 
         Employee tempEmp = null;
-
         while (tempEmp == null) {
-            /**
-             * calls view class for username and password
-             */
+
+             //calls view class for username and password
+
             view.askForUsername();
             String username = sc.nextLine();
             view.askForPassword();
@@ -50,7 +48,7 @@ public class LoginDisplayController {
                     break;
                 }
             }
-            // displays error message if entered inccorectly 
+            // displays error message if entered incorrectly 
             if (tempEmp == null) {
                 view.printLoginError();
             }
@@ -58,9 +56,10 @@ public class LoginDisplayController {
 
         /**
          * If the username and password match the user gets prompt to Sales
-         * Display Phase 1
+         * Display Phase
          */
         new SalesDisplayController(tempEmp).run();
-
+        
+        sc.close();
     }
 }

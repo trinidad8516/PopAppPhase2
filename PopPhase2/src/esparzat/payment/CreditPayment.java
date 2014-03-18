@@ -33,4 +33,9 @@ public class CreditPayment extends Payment {
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
+   
+    @Override
+	public String toString() {
+		return "Credit (#" + cardNum + "): " + this.getFormattedAmount();
+	}
 }

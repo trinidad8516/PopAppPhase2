@@ -13,7 +13,7 @@ import esparzat.login.LoginDisplayController;
 
 /**
  *
- * @author Futuro
+ * @author Esparza
  */
 public class Prototype {
 
@@ -21,7 +21,7 @@ public class Prototype {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
         new LoginDisplayController().run();
     }
 }

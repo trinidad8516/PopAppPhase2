@@ -10,47 +10,109 @@
 package esparzat.sales;
 
 import esparzat.data.Product;
+import esparzat.data.Employee;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 
 /**
  *
  * @author Futuro
  */
-class SalesDisplayModel {
+public class SalesDisplayModel {
 
-    Product[] getInventory() {
-        Product[] ps = new Product[5];
-     
-        ps[0] = new Product();
-        ps[0].setUpc("04963406");
-        ps[0].setDescription(" Coca-Cola Classic Can 12oz");
-        ps[0].setPrice(new BigDecimal(.60));
-        ps[0].setNumInStock(500);
+	/**
+	 * Provides an array of all products in the inventory.
+	 * 
+	 * @return All products
+	 */
+	public Product[] getInventory() {
+		Product[] ps = new Product[3];
 
-        ps[1] = new Product();
-        ps[1].setUpc("60411088");
-        ps[1].setDescription("Lay's Orig. Chips 180g");
-        ps[1].setPrice(new BigDecimal(1.25));
-        ps[1].setNumInStock(100);
+		ps[0] = new Product();
+		ps[0].setUpc("1");
+		ps[0].setDescription("BANANAS");
+		ps[0].setPrice(new BigDecimal(.59));
+		ps[0].setNumInStock(10);
 
-        ps[2] = new Product();
-        ps[2].setUpc("60411090");
-        ps[2].setDescription("Lay's SC&O Chips 180g");
-        ps[2].setPrice(new BigDecimal(1.25));
-        ps[2].setNumInStock(50);
+		ps[1] = new Product();
+		ps[1].setUpc("2");
+		ps[1].setDescription("APPLES");
+		ps[1].setPrice(new BigDecimal(.79));
+		ps[1].setNumInStock(23);
 
-        ps[3] = new Product();
-        ps[3].setUpc("08830380");
-        ps[3].setDescription("Apple Yogurt Smoothie 9oz");
-        ps[3].setPrice(new BigDecimal(1.55));
-        ps[3].setNumInStock(100);
+		ps[2] = new Product();
+		ps[2].setUpc("3");
+		ps[2].setDescription("PEARS");
+		ps[2].setPrice(new BigDecimal(.65));
+		ps[2].setNumInStock(5);
 
-        ps[4] = new Product();
-        ps[4].setUpc("08830381");
-        ps[4].setDescription("Mango Blended Yogurt 32oz");
-        ps[4].setPrice(new BigDecimal(2.05));
-        ps[4].setNumInStock(50);
+		return ps;
+	}
 
-        return ps;
-    }
+	public void addNewEmployee(Employee emp) {
+		
+		List<Employee> emps = getEmployees();
+		emps.add(emp);
+		
+		File f = new File("employees.txt");
+		
+		PrintWriter pw = null;
+
+		try {
+			pw = new PrintWriter(f);
+		} catch (FileNotFoundException e) {
+			System.out.println("Could not locate file.");
+		}
+		
+		for(Employee em: emps) {
+			pw.println(em.getUsername() + "\t" + (new String(em.getPassword())) + "\t" + em.getAccessLevel());
+		}
+		
+		pw.close();
+	}
+	
+	public List<Employee> getEmployees() {
+
+		List<Employee> emps = new ArrayList<Employee>();
+		
+		File f = new File("employees.txt");
+
+		if (!f.exists()) {
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				System.out.println("Could not create file.");
+			}
+		}
+
+		Scanner sc = null;
+
+		try {
+			sc = new Scanner(f);
+		} catch (FileNotFoundException e) {
+			System.out.println("Could not open file.");
+		}
+
+		while (sc.hasNext()) {
+			Employee e = new Employee();
+			String empData = sc.nextLine();
+			String[] empFields = empData.split("\t", -1);
+			e.setUsername(empFields[0]);
+			e.setPassword(empFields[1].toCharArray());
+			e.setAccessLevel(empFields[2]);
+			emps.add(e);
+		}
+
+		return emps;
+	}
+
+
 }

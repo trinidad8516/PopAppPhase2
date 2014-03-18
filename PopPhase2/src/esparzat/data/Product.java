@@ -25,7 +25,19 @@ public class Product {
     private String description;
     public int setQuantity;
 
-    public String getUpc() {
+	public Product() {
+		
+	}
+    
+    public Product(Product p) {
+    	this.upc = p.getUpc();
+		this.description = p.getDescription();
+		this.price = p.getPrice();
+		this.quantity = p.getQuantity();
+		this.numInStock = p.getNumInStock();
+	}
+
+	public String getUpc() {
         return upc;
     }
 

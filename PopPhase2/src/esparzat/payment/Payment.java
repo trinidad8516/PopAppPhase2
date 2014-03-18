@@ -10,6 +10,7 @@
 package esparzat.payment;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 
 /**
  *
@@ -40,4 +41,14 @@ public class Payment {
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
+    
+	/**
+	 * Returns the amount in a currency formatted String.
+	 * 
+	 * @return The amount as a String
+	 */
+    public String getFormattedAmount() {
+		NumberFormat nf = NumberFormat.getCurrencyInstance();
+		return nf.format(amount);
+	}
 }
