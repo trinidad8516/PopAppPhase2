@@ -38,7 +38,7 @@ public class Employee {
     public void setPassword(char[] password) {
         this.password = password;
     }
-
+    
     public String getAccessLevel() {
         return accessLevel;
     }

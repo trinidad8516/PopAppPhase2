@@ -7,7 +7,7 @@
  *
  * 
  */
-package esparzat.payment;
+package esparzat.data;
 
 /**
  *

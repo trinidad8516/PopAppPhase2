@@ -14,7 +14,7 @@ package esparzat.login;
  * @author Futuro
  */
 //being requested from controller class
-public class LoginDisplayView {
+public class DisplayLoginView {
     public void askForUsername() {
         System.out.print("Username: ");
     }

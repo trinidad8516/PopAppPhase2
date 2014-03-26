@@ -8,6 +8,7 @@
  * 
  */
 package esparzat.login;
+
 import esparzat.data.Employee;
 
 import java.io.File;
@@ -18,13 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
-
 /**
- *This arrays are use for Employee Login
- *  * @author Futuro
+ * This arrays are use for Employee Login * @author Futuro
  */
-public class LoginDisplayModel {
+public class RunGetEmployeeFiel {
 
 	/**
 	 * Provides an array of all employees in the system.
@@ -35,14 +33,7 @@ public class LoginDisplayModel {
 
 		List<Employee> emps = new ArrayList<Employee>();
 
-		// One possible approach...
-//		Employee emp = new Employee();
-//		emp.setUsername("ADMIN");
-//		emp.setPassword("admin".toCharArray());
-//		emp.setAccessLevel(Employee.ADMIN_LEVEL);
-//		emps.add(emp);
 		// Load remaining user
-		
 		File f = new File("employees.txt");
 
 		if (!f.exists()) {
@@ -50,22 +41,20 @@ public class LoginDisplayModel {
 				f.createNewFile();
 				insertAdminUser(f);
 			} catch (IOException e) {
-				System.out.println("Could not create file.");
+				System.out.println("Could not create employee file.");
 			}
 		}
 
 		Scanner sc = null;
-
 		try {
 			sc = new Scanner(f);
 		} catch (FileNotFoundException e) {
-			System.out.println("Could not open file.");
+			System.out.println("The file was not  employee found.");
 		}
 
 		/**
-		 * Will continue to read from the file
-		 * one line at a time, until there are no
-		 * remaining lines.
+		 * Will continue to read from the file one line at a time, until there
+		 * are no remaining lines.
 		 */
 		while (sc.hasNext()) {
 			Employee e = new Employee();
@@ -79,7 +68,7 @@ public class LoginDisplayModel {
 
 		return emps;
 	}
-			
+
 	private void insertAdminUser(File f) {
 		PrintWriter pw = null;
 
@@ -88,9 +77,10 @@ public class LoginDisplayModel {
 		} catch (FileNotFoundException e) {
 			System.out.println("Could not locate file.");
 		}
-		
-		pw.println("ADMIN" + "\t" + "administrator1" + "\t" + Employee.ADMIN_LEVEL);
-		
+
+		pw.println("ADMIN" + "\t" + "administrator1" + "\t"
+				+ Employee.ADMIN_LEVEL);
+
 		pw.close();
 	}
 }

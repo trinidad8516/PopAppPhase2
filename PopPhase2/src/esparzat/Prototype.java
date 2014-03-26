@@ -9,7 +9,7 @@
  */
 package esparzat;
 
-import esparzat.login.LoginDisplayController;
+import esparzat.login.LoginController;
 
 /**
  *
@@ -22,6 +22,6 @@ public class Prototype {
      */
     public static void main(String[] args) {
         
-        new LoginDisplayController().run();
+        new LoginController().run();
     }
 }

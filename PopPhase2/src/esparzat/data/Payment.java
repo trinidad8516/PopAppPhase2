@@ -7,7 +7,7 @@
  *
  * 
  */
-package esparzat.payment;
+package esparzat.data;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;

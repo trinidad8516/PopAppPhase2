@@ -10,7 +10,7 @@
 package esparzat.login;
 
 import esparzat.data.Employee;
-import esparzat.sales.SalesDisplayController;
+import esparzat.sales.SalesController;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -20,25 +20,27 @@ import java.util.Scanner;
  * @author Originally written by Zack Hoffmann modified and re-arrange by
  * Trinidad Esparza
  */
-public class LoginDisplayController {
-    public void run() {
-        LoginDisplayView view = new LoginDisplayView();
-        LoginDisplayModel model = new LoginDisplayModel();
+public class LoginController {
+    
+	//RUN METHOD
+	public void run() {
+        DisplayLoginView view = new DisplayLoginView();
+        RunGetEmployeeFiel model = new RunGetEmployeeFiel();
 
         Scanner sc = new Scanner(System.in);
 
         Employee tempEmp = null;
+        
         while (tempEmp == null) {
 
-             //calls view class for username and password
-
+             //calls view class for User_name and password
             view.askForUsername();
             String username = sc.nextLine();
             view.askForPassword();
             char[] password = sc.nextLine().toCharArray();
 
             /**
-             * Compares the input username and password with .data.Employee and
+             * Compares the input User_Name and Password with .data.Employee and
              * LoginDisplayMode.
              */
             for (Employee e : model.getEmployees()) {
@@ -55,10 +57,10 @@ public class LoginDisplayController {
         }  //end of the while loop
 
         /**
-         * If the username and password match the user gets prompt to Sales
+         * If the user_name and password match the user gets prompt to Sales
          * Display Phase
          */
-        new SalesDisplayController(tempEmp).run();
+        new SalesController(tempEmp).run();
         
         sc.close();
     }

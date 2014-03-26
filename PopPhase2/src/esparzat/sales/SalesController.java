@@ -8,16 +8,18 @@
  */
 package esparzat.sales;
 
+
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Scanner;
 
+import esparzat.data.CashPayment;
+import esparzat.data.CheckPayment;
+import esparzat.data.CreditPayment;
 import esparzat.data.Employee;
+import esparzat.data.Payment;
 import esparzat.data.Product;
-import esparzat.payment.CashPayment;
-import esparzat.payment.CheckPayment;
-import esparzat.payment.CreditPayment;
-import esparzat.payment.Payment;
+import esparzat.sales.RunGetProductFile;
 
 
 
@@ -25,7 +27,7 @@ import esparzat.payment.Payment;
  * @author Originally written by Zack Hoffmann modified and re-arrange by
  * Trinidad Esparza
  */
-public class SalesDisplayController {
+public class SalesController {
 
 	private Employee emp;
 	private Product[] invoice;
@@ -35,8 +37,8 @@ public class SalesDisplayController {
 	private int invoiceSize;
 	private int paymentsSize;
 
-	private SalesDisplayView view;
-	private SalesDisplayModel model;
+	private DisplayProductViews view;
+	private RunGetProductFile model;
 
 	private Scanner sc;
 
@@ -48,14 +50,14 @@ public class SalesDisplayController {
 	 * @param emp
 	 *            The employee currently logged in.
 	 */
-	public SalesDisplayController(Employee emp) {
+	public SalesController(Employee emp) {
 		this.emp = emp;
 		invoice = new Product[1000];
 		payments = new Payment[100];
 		invoiceSize = 0;
 		paymentsSize = 0;
-		view = new SalesDisplayView();
-		model = new SalesDisplayModel();
+		view = new DisplayProductViews();
+		model = new RunGetProductFile();
 		sc = new Scanner(System.in);
 	}
 
@@ -166,7 +168,7 @@ public class SalesDisplayController {
 		System.out.print("Manager? (y/n) ");
 		e.setAccessLevel(sc.nextLine().equalsIgnoreCase("y") ? Employee.MANAGER_LEVEL
 				: Employee.EMPLOYEE_LEVEL);
-		model.addNewEmployee(e);
+		((Object) model).addNewEmployee(e);
 		
 
 	}

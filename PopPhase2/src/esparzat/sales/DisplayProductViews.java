@@ -12,14 +12,14 @@ package esparzat.sales;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 
+import esparzat.data.Payment;
 import esparzat.data.Product;
-import esparzat.payment.Payment;
 
 /**
  *
  * @author Futuro
  */
-class SalesDisplayView {
+class DisplayProductViews {
 
     public void printInvoice(Product[] invoice,  BigDecimal subtotal ) {
         

@@ -18,6 +18,7 @@ import java.text.NumberFormat;
  */
 public class Product {
 
+	//created getters and setters
     private String upc;
     private int quantity;
     private BigDecimal price;
@@ -26,9 +27,7 @@ public class Product {
     public int setQuantity;
 
 	public Product() {
-		
 	}
-    
     public Product(Product p) {
     	this.upc = p.getUpc();
 		this.description = p.getDescription();
@@ -36,7 +35,7 @@ public class Product {
 		this.quantity = p.getQuantity();
 		this.numInStock = p.getNumInStock();
 	}
-
+    
 	public String getUpc() {
         return upc;
     }
@@ -44,7 +43,23 @@ public class Product {
     public void setUpc(String upc) {
         this.upc = upc;
     }
+    
+    public String getDescription() {
+        return description;
+    }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal string) {
+        this.price = string;
+    }
+    
     public int getQuantity() {
         return quantity;
     }
@@ -53,28 +68,12 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
     public int getNumInStock() {
         return numInStock;
     }
 
     public void setNumInStock(int numInStock) {
         this.numInStock = numInStock;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     @Override
